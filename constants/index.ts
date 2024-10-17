@@ -32,8 +32,14 @@ export const SkillData = [
     height: 80,
   },
   {
-    name: "Redux",
-    Image: "/redux.png",
+    name: "Java",
+    Image: "/java.png",
+    width: 80,
+    height: 80,
+  },
+  {
+    name: "SpringBoot",
+    Image: "/springboot.png",
     width: 80,
     height: 80,
   },
@@ -51,14 +57,14 @@ export const SkillData = [
     height: 80,
   },
   {
-    name: "Framer Motion",
-    Image: "/framer.png",
+    name: "C#",
+    Image: "/csharp.png",
     width: 80,
     height: 80,
   },
   {
-    name: "Stripe Payment",
-    Image: "/stripe.webp",
+    name: ".net",
+    Image: "/dotnet.png",
     width: 80,
     height: 80,
   },
@@ -69,10 +75,22 @@ export const SkillData = [
     height: 80,
   },
   {
-    name: "Mongo db",
-    Image: "/mongodb.png",
-    width: 40,
+    name: "Docker",
+    Image: "/docker.webp",
+    width: 80,
+    height: 80,
+  },
+  {
+    name: "Azure",
+    Image: "/azure.png",
+    width: 80,
     height: 40,
+  },
+  {
+    name: "Postgres",
+    Image: "/postgres.png",
+    width: 80,
+    height: 80,
   },
 ];
 

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 export default function Home() {
@@ -29,7 +30,7 @@ export default function Home() {
             </Link>
             <Link
               href="/my-projects"
-              className="rounded-[20px] group relative bg-trasparent px-5 border border-white py-3 text-lg text-white max-w-[200px]"
+              className="rounded-[20px] group relative bg-transparent px-5 border border-white py-3 text-lg text-white max-w-[200px]"
             >
               <div className="absolute rounded-[20px] z-[1]  bg-white inset-0 opacity-0 group-hover:opacity-20" />
               Meus Projetos
