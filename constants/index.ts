@@ -138,7 +138,7 @@ export const Projects = [
   },
   {
     title: "To Do List",
-    text: "Este projeto foi desenvolvido como parte do teste técnico proposto pela Legaplan. A aplicação permite adicionar, concluir e remover tarefas, com persistência local dos dados no navegador. Foram utilizados ",
+    text: "Este projeto foi desenvolvido como parte do teste técnico proposto pela Legaplan. A aplicação permite adicionar, concluir e remover tarefas, com persistência local dos dados no navegador. Foram utilizados  React e Next.js. ",
     src: "/ProjetoToDoList.png",
     githubUrl: "https://github.com/Alvarezpro87/TodoListChalange",
     liveUrl: "https://todo-list-chalange.vercel.app/",
