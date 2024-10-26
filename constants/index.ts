@@ -142,6 +142,13 @@ export const Projects = [
     src: "/ProjetoToDoList.png",
     githubUrl: "https://github.com/Alvarezpro87/TodoListChalange",
     liveUrl: "https://todo-list-chalange.vercel.app/",
+  },
+  {
+    title: "Docker Gen",
+    text: "Este projeto é uma aplicação web que permite criar e gerenciar containers Docker automaticamente, gerando Dockerfiles e executando contêineres com base nas tecnologias selecionadas pelo usuário. ",
+    src: "/dockergen.png",
+    githubUrl: "https://github.com/Alvarezpro87/DockerGen.git",
+    
   }
   
 ];
