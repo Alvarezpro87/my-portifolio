@@ -28,6 +28,7 @@ const Page = () => {
         </div>
         <Swiper
           slidesPerView={5}
+          
           loop={true}
           autoplay={{
             delay: 0,

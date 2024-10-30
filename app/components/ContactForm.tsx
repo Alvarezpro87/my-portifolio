@@ -39,7 +39,7 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="max-w-[90%] sm:max-w-[80%] md:max-w-[60%] mx-auto">
       <h2 className="text-2xl font-bold mb-5 text-white">Contact Me</h2>
       {error && <p className="text-red-500">{error}</p>}
       {success && <p className="text-green-500">Mensagem enviada com sucesso!</p>}
