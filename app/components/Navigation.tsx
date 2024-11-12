@@ -28,7 +28,7 @@ const Navigation = () => {
   }, [isRouting, path]);
   return (
     <div
-      style={{ left: "20%" }}
+      style={{ left: "3%" }}
       className="absolute z-[50] -bottom-20 w-[50%] md:w-[20%] max-h-[150px] rounded-full flex justify-between items-center border bg-black border-white px-4 py-7"
     >
 
