@@ -146,7 +146,7 @@ export const Projects = [
   {
     title: "Desafio Anéis do Poder - Full Stack Application",
     text: "Esta é a conclusão do Desafio Anéis do Poder, uma aplicação Full Stack desenvolvida com React (Vite) no frontend, Node.js (TypeScript) no backend e PostgreSQL como banco de dados. Este projeto pode ser visualizado via web na nuvem até a data 04/01/2024 ",
-    src: "/ProjetoToDoList.png",
+    src: "/desafio-aneis-do-poder.png",
     githubUrl: "https://github.com/Alvarezpro87/Desafio-aneis-do-Poder",
     liveUrl: "https://desafio-aneis-do-poder.vercel.app",
   },
