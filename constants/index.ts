@@ -127,13 +127,13 @@ export const Projects = [
     title: "Gestão de Contribuição",
     text: "Este projeto é uma API REST desenvolvida para gerenciar contribuições de contribuintes, possibilitando cálculo do tempo total de contribuição, e o valor total atualizado das contribuições com base nas aliquotas aplicáveis. Tecnologias utilizadas Java, Spring Boot, PostgreSQL, React e typescript.",
     src: "/gestaocontribuicao.png",
-    githubUrl: "https://github.com/Alvarezpro87/FilmFinder",
+    githubUrl: "https://github.com/Alvarezpro87/Gestao-Contribuicao"
   },
   {
     title: "FilmFinder",
     text: "É uma aplicação web que permite aos usuários buscar, favoritar e compartilhar filmes de uma API. A aplicação consiste em um frontend construído com React e TypeScript e um backend utilizando Java com Spring Boot e Docker. O banco de dados utilizado é o PostgreSQL, e o projeto é containerizado utilizando Docker.",
     src: "/filmfinder.png",
-    githubUrl: "https://github.com/Alvarezpro87/Gestao-Contribuicao",
+    githubUrl: "https://github.com/Alvarezpro87/FilmFinder",
     liveUrl: "https://frontend-bzi6.onrender.com/",
   },
   {
