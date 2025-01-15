@@ -118,6 +118,12 @@ export const Socials = [
 ];
 export const Projects = [
   {
+  title: "API REST com Spring Boot",
+    text: "API REST desenvolvida em Spring Boot, responsável por disponibilizar e gerenciar assinaturas e dados de um usuário. Atualmente, o projeto está na versão 0.0.1.",
+    src: "/apirest.png",
+    githubUrl: "https://github.com/Alvarezpro87/api_rest_project",
+  },
+  {
     title: "Minimal API com Autenticação JWT em ASP.NET Core",
     text: "Este projeto é uma API mínima desenvolvida em ASP.NET Core que gerencia administradores e veículos. Ele implementa autenticação e autorização usando tokens JWT, e utiliza o Entity Framework Core com SQL Server para persistência de dados.",
     src: "/minimalapi.png",
