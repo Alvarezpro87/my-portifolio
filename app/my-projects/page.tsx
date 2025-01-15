@@ -10,7 +10,7 @@ const Page = () => {
       style={{ backgroundImage: "url(/mountain.jpg)" }}
       className="w-full min-h-screen flex flex-col items-center justify-start bg-center bg-cover px-4 pt-[180px]"
     >
-      <h2 className="text-white text-3xl font-semibold mb-8">Meus Projetos</h2>
+      <h2 className="text-white text-3xl font-semibold mb-8">Meus Projetos: Clique na imagem para saber mais</h2>
 
       {/* Contêiner com altura máxima e rolagem para visualizar todos os projetos */}
       <div className="w-full max-w-[1200px] px-4 h-[calc(100vh-220px)] overflow-y-auto">
