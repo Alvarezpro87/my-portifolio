@@ -1,6 +1,11 @@
 "use client";
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform
+} from 'framer-motion';
 
 interface Props {
   image: string;
@@ -11,78 +16,114 @@ interface Props {
 }
 
 const ProjectCard = ({ image, title, text, githubUrl, liveUrl }: Props) => {
-  const [isFlipped, setIsFlipped] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  function handleFlip() {
-    if (!isAnimating) {
-      setIsFlipped(!isFlipped);
-      setIsAnimating(true);
-    }
-  }
+  // Valores para o efeito de tilt
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useTransform(y, [-20, 20], [10, -10]);
+  const rotateY = useTransform(x, [-20, 20], [-10, 10]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = cardRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    const posX = e.clientX - rect.left - rect.width / 2;
+    const posY = e.clientY - rect.top - rect.height / 2;
+    x.set(posX / 10);
+    y.set(posY / 10);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
 
   return (
-    <div
-      onClick={handleFlip}
-      className="w-full sm:w-[350px] lg:w-[450px] min-h-[280px] rounded-md cursor-pointer mx-auto mb-8"
-    >
+    <>
+      {/* Cartão com efeito de tilt */}
       <motion.div
-        className="flip-card-inner w-full h-full"
-        initial={false}
-        animate={{ rotateY: isFlipped ? 180 : 360 }}
-        transition={{ duration: 0.6, animationDirection: 'normal' }}
-        onAnimationComplete={() => setIsAnimating(false)}
+        ref={cardRef}
+        className="relative cursor-pointer rounded-xl overflow-hidden shadow-2xl"
+        style={{ perspective: 1000, rotateX: rotateX, rotateY: rotateY }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onClick={() => setShowModal(true)}
+        whileHover={{ scale: 1.03 }}
       >
-        {/* Frente do card */}
-        <div
+        <motion.div
+          className="h-64 bg-cover bg-center"
           style={{ backgroundImage: `url(${image})` }}
-          className="w-full h-full group relative flip-card-front bg-cover bg-center text-white rounded-lg p-4"
+          transition={{ duration: 0.3 }}
         >
-          <div className="absolute inset-0 w-full h-full rounded-md bg-black opacity-0 group-hover:opacity-40" />
-          <div className="absolute inset-0 w-full h-full text-[20px] pb-10 hidden group-hover:flex items-center z-[20] justify-center">
-            Saiba mais &gt;
+          {/* Overlay gradiente para destaque */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
+          <div className="absolute bottom-4 left-4 text-white">
+            <h2 className="text-2xl font-bold drop-shadow-lg">{title}</h2>
           </div>
-        </div>
-
-        {/* Atrás do card */}
-        <div
-          style={{ backgroundImage: `url(${image})` }}
-          className="w-full h-full group relative flip-card-back bg-cover bg-center text-white rounded-lg p-4"
-        >
-          <div className="absolute inset-0 w-full h-full rounded-md bg-black opacity-50 z-[-1]" />
-          <div className="flex flex-col gap-4 z-[30] overflow-hidden p-4 bg-black bg-opacity-60 rounded-lg">
-            <h1 className="text-white text-xl md:text-2xl font-semibold">{title}</h1>
-            {/* Área de texto com rolagem */}
-            <div className="text-gray-200 text-[15px] max-h-[80px] md:max-h-[100px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">
-              {text}
-            </div>
-            {/* Botões para GitHub e Deploy */}
-            <div className="flex gap-2 mt-2">
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-2 py-1 text-center bg-blue-500 hover:bg-blue-400 text-white rounded-md text-sm transition duration-300 ease-in-out"
-                >
-                  GitHub
-                </a>
-              )}
-              {liveUrl && (
-                <a
-                  href={liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-2 py-1 text-center bg-green-500 hover:bg-green-400 text-white rounded-md text-sm transition duration-300 ease-in-out"
-                >
-                  Ver Deploy
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
+        </motion.div>
       </motion.div>
-    </div>
+
+      {/* Modal com informações detalhadas */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 backdrop-blur-sm"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div
+              className="bg-white rounded-2xl overflow-hidden max-w-3xl w-full mx-4"
+              initial={{ y: "100vh", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "100vh", opacity: 0 }}
+              transition={{ type: "spring", stiffness: 50, damping: 20 }}
+              onClick={(e) => e.stopPropagation()} // Evita fechar o modal ao clicar no conteúdo
+            >
+              <div
+                className="relative h-80 bg-cover bg-center"
+                style={{ backgroundImage: `url(${image})` }}
+              >
+                <button
+                  className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition"
+                  onClick={() => setShowModal(false)}
+                >
+                  X
+                </button>
+              </div>
+              <div className="p-6">
+                <h2 className="text-3xl font-bold mb-4">{title}</h2>
+                <p className="mb-6 text-gray-700">{text}</p>
+                <div className="flex flex-wrap gap-4">
+                  {githubUrl && (
+                    <a
+                      href={githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                  {liveUrl && (
+                    <a
+                      href={liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
+                    >
+                      Ver Deploy
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

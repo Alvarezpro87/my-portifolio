@@ -124,6 +124,27 @@ export const Projects = [
     githubUrl: "https://github.com/Alvarezpro87/api_rest_project",
   },
   {
+    title: "SpeedInfra",
+    text: "Site para a empresa SpeedInfra, onde atua com Devops.",
+    src: "/speedinfra.png",
+    githubUrl: "https://github.com/Alvarezpro87/speedinfra",
+    liveUrl: "https://speedinfra.vercel.app/",
+  },
+  {
+    title: "Mapa Interativo do Brasil",
+    text: "Este é um Mapa Interativo do Brasil desenvolvido em **HTML, CSS e JavaScript**,para a Caixa Econômica, projetado para ser exibido em um painel LED de 672x840 pixels para o evento do Encontro Nacional dos Novos Prefeitos  do Brasil que aconteceu em Brasília. O mapa permite que os usuários cliquem nos estados para destacar suas regiões.",
+    src: "/mapasbrasil.png",
+    githubUrl: "https://github.com/Alvarezpro87/mapasbrasil",
+    liveUrl: "https://mapasbrasil.vercel.app/",
+  },
+  {
+    title: "News Gamification",
+    text: "É um desafio de código proposto por uma empresa que consiste em uma plataforma web para aumentar o engajamento dos leitores da newsletter do The News através de gamificação.",
+    src: "/newsgamification.png",
+    githubUrl: "https://github.com/Alvarezpro87/news-gamification",
+    liveUrl: "https://news-gamification.vercel.ap/login",
+  },
+  {
     title: "Minimal API com Autenticação JWT em ASP.NET Core",
     text: "Este projeto é uma API mínima desenvolvida em ASP.NET Core que gerencia administradores e veículos. Ele implementa autenticação e autorização usando tokens JWT, e utiliza o Entity Framework Core com SQL Server para persistência de dados.",
     src: "/minimalapi.png",

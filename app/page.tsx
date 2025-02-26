@@ -17,8 +17,8 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-gray-200 hidden md:block">
-          Sou um Desenvolvedor FullStack com foco em construir aplicações web escaláveis e eficientes, utilizando tecnologias
-           como Java, SpringBoot, C#, .NET, Docker, Postgres, SQLServer, React, Next.js e TypeScript.
+          Sou um Desenvolvedor FullStack com experiência em desenvolvimento de APIs, front-end e back-end utilizando tecnologias
+           como Java, SpringBoot, Node, Next, Java Script, Typescript, React, Tailwind, Docker, Postgres, Mysql,  entre outras.
 
           </p>
           <div className="flex-col md:flex-row hidden md:flex gap-5">
@@ -51,20 +51,20 @@ export default function Home() {
           href="/my-skills"
           className="rounded-[20px] group bg-blue-500 px-5 py-3 text-lg text-white max-w-[200px]"
         >
-          Learn more
+          Saiba Mais
         </Link>
 
         <Link
           href="/my-projects"
           className="rounded-[20px] group bg-trasparent border border-white px-5 py-3 text-lg text-white max-w-[200px]"
         >
-          My projects
+          Meus Projetos
         </Link>
         <Link
           href="/contact-me"
           className="rounded-[20px] group bg-trasparent border border-white px-5 py-3 text-lg text-white max-w-[200px]"
         >
-          Contact me
+          Entre em Contato
         </Link>
       </div>
 
