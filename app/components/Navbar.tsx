@@ -7,8 +7,9 @@ import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <div className="fixed top-0 z-[40] w-full h-auto bg-transparent flex flex-col sm:flex-row justify-between items-center px-4 md:px-20 sm:py-5">
-      <div className="flex flex-col sm:flex-row items-center gap-3">
+    <div className="fixed top-0 z-[40] w-full bg-transparent flex flex-col sm:flex-row justify-between items-center gap-6 px-4 md:px-20 py-6">
+      {/* Seção do perfil */}
+      <div className="flex items-center gap-3">
         <Link href="/" className="flex flex-row gap-3 items-center group">
           <motion.div
             className="relative w-[40px] h-[40px] rounded-full overflow-hidden"
@@ -28,7 +29,8 @@ const Navbar = () => {
         </Link>
       </div>
       
-      <div className="flex flex-col sm:flex-row items-center gap-3 mt-3 sm:mt-0">
+      {/* Seção do botão e redes sociais */}
+      <div className="flex flex-col sm:flex-row items-center gap-4">
         <a
           href="/alexandre-cardoso-cv.pdf"
           target="_blank"
@@ -37,8 +39,7 @@ const Navbar = () => {
         >
           Download do Currículo
         </a>
-        
-        <div className="flex flex-row gap-5 mt-2 sm:mt-0">
+        <div className="flex flex-row gap-4">
           {Socials.map((social) => (
             <a
               key={social.name}
