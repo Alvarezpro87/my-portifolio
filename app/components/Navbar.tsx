@@ -30,7 +30,7 @@ const Navbar = () => {
       
       <div className="flex flex-col sm:flex-row items-center gap-3 mt-3 sm:mt-0">
         <a
-          href="/alexandrealvarez1.pdf"
+          href="/alexandre-cardoso-cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-md"
