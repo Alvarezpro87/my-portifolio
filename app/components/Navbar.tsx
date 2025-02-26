@@ -1,65 +1,118 @@
 "use client";
-import React from 'react';
-import Image from 'next/image';
-import { Socials } from '../../constants';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { HiOutlineMenu, HiOutlineX } from "react-icons/hi";
+import { Socials } from "../../constants";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="fixed top-0 z-[40] w-full bg-transparent flex flex-col sm:flex-row justify-between items-center gap-6 px-4 md:px-20 py-6">
-      {/* Seção do perfil */}
-      <div className="flex items-center gap-3">
-        <Link href="/" className="flex flex-row gap-3 items-center group">
-          <motion.div
-            className="relative w-[40px] h-[40px] rounded-full overflow-hidden"
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.3 }}
-          >
+    <nav className="fixed top-0 left-0 w-full z-50">
+      {/* Barra principal */}
+      <div className="max-w-7x1 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+        {/* Área do perfil */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden">
             <Image
               src="/perfil.jpeg"
               alt="Foto do perfil"
               fill
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: "cover" }}
             />
-          </motion.div>
-          <h1 className="text-white text-[20px] sm:text-[25px] font-semibold">
+          </div>
+          <span className="text-white text-xl font-bold">
             Alexandre Cardoso
-          </h1>
+          </span>
         </Link>
-      </div>
-      
-      {/* Seção do botão e redes sociais */}
-      <div className="flex flex-col sm:flex-row items-center gap-4">
-        <a
-          href="/alexandre-cardoso-cv.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-md"
-        >
-          Download do Currículo
-        </a>
-        <div className="flex flex-row gap-4">
-          {Socials.map((social) => (
-            <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div style={{ width: '28px', height: '28px', position: 'relative' }}>
-                <Image
-                  src={social.src}
-                  alt={social.name}
-                  fill
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-            </a>
-          ))}
+
+        {/* Menu desktop */}
+        <div className="hidden md:flex items-center gap-6">
+          <Link
+            href="/alexandre-cardoso-cv.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-md"
+          >
+            Download do Currículo
+          </Link>
+          <div className="flex items-center gap-4">
+            {Socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div className="relative w-7 h-7">
+                  <Image
+                    src={social.src}
+                    alt={social.name}
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Botão hamburger para mobile */}
+        <div className="md:hidden">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-white focus:outline-none"
+          >
+            {isOpen ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* Menu mobile animado */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden bg-black/90"
+          >
+            <div className="px-4 py-4 space-y-4">
+              <Link
+                href="/alexandre-cardoso-cv.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block px-4 py-2 bg-gradient-to-r from-purple-500 to-red-500 text-white rounded-md text-center"
+              >
+                Download do Currículo
+              </Link>
+              <div className="flex items-center justify-center gap-4">
+                {Socials.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <div className="relative w-7 h-7">
+                      <Image
+                        src={social.src}
+                        alt={social.name}
+                        fill
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 
